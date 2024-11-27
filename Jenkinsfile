@@ -14,7 +14,7 @@ pipeline {
                     // PowerShell script to check the recycle bin
                     powershell '''
                     Import-Module SharePointPnPPowerShellOnline
-                    Connect-PnPOnline -Url "https://yoursharepointsite" -Credentials (Get-Credential)
+                    Connect-PnPOnline -Url "https://valorticcsp.sharepoint.com/sites/pruebabasurarecu" -Credentials (Get-Credential)
                     $recycleBinItems = Get-PnPRecycleBinItem
                     Write-Output "Items in Recycle Bin: $($recycleBinItems.Count)"
                     '''
@@ -71,7 +71,7 @@ pipeline {
                             // PowerShell script to recover items
                             powershell '''
                             Import-Module SharePointPnPPowerShellOnline
-                            Connect-PnPOnline -Url "https://valorticcsp.sharepoint.com/sites/pruebabasurarecu" -Credentials (Get-Credential)
+                            Connect-PnPOnline -Url https://valorticcsp.sharepoint.com/sites/pruebabasurarecu" -Credentials (Get-Credential)
                             $recycleBinItems = Get-PnPRecycleBinItem
                             $itemsToRecover = $recycleBinItems | Select-Object -Skip (3 * $recycleBinItems.Count / 5) -First ($recycleBinItems.Count / 5)
                             $itemsToRecover | ForEach-Object { Restore-PnPRecycleBinItem -Identity $_.Id }
