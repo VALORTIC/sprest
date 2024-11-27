@@ -14,7 +14,7 @@ pipeline {
                     // PowerShell script to check the recycle bin
                     powershell '''
                     Import-Module SharePointPnPPowerShellOnline
-                    Connect-PnPOnline -Url "https://valorticcsp.sharepoint.com/sites/pruebabasurarecu" -Credentials (Get-Credential)
+                    Connect-PnPOnline -Url "https://yoursharepointsite" -Credentials (Get-Credential)
                     $recycleBinItems = Get-PnPRecycleBinItem
                     Write-Output "Items in Recycle Bin: $($recycleBinItems.Count)"
                     '''
